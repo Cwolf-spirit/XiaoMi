@@ -1,0 +1,29 @@
+@import '~@style/base.scss';
+
+$primary:#FF6600;
+.container {
+  width: 1226px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.clearfix {
+  // 兼容IE
+  zoom: 1;
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+.active{
+  color: $primary;
+}
+

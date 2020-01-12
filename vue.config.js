@@ -30,6 +30,7 @@ module.exports = {
       .set("@storage", resolve("src/storage")) // 对应本地存储
       .set("@utils", resolve("src/utils")) // 对应本地工具
       .set("@views", resolve("src/views")) // 对应页面
+      .set("@style", resolve("src/style")) // 对应样式
       .set("@container", resolve("src/container")) // 对应布局容器
       .set("@layout", resolve("src/layout")); // 对应布局容器组件
     const oneOfsMap = config.module.rule("scss").oneOfs.store;
