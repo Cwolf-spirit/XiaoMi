@@ -2,10 +2,15 @@
   <div>
     <div class="header">
       <div class="container">
-        <img src="@img/logo-mi.png" alt="" />
-        <div class="title">
-          <h1>小米商城</h1>
-          <span>让每个人都能享受科技的乐趣</span>
+        <div
+          style="display:flex;cursor:pointer"
+          @click="$router.push({ name: 'index' })"
+        >
+          <img src="@img/logo-mi.png" alt="" />
+          <div class="title">
+            <h1>小米商城</h1>
+            <span>让每个人都能享受科技的乐趣</span>
+          </div>
         </div>
       </div>
     </div>
@@ -13,7 +18,7 @@
       <div class="loginDialog">
         <div class="header">
           <span :class="isShow && 'active'" @click="loginByZH">账号登录</span>
-          <span :class="!isShow && 'active'" @click="loginByMa">扫码登录</span>
+          <span :class="!isShow && 'active'" @click="loginBySM">扫码登录</span>
         </div>
         <div class="content" v-if="isShow">
           <div class="loginName">
@@ -77,7 +82,7 @@ export default {
     loginByZH() {
       this.isShow = true;
     },
-    loginByMa() {
+    loginBySM() {
       this.isShow = false;
     },
     login() {
@@ -89,6 +94,7 @@ export default {
         this.$msg.success("登录成功");
         this.$store.commit("userInfo", data);
         this.$store.commit("isLogin", true);
+        this.$cookie.set("userId", data.id, { expires: "1M" });
         this.$router.push({ name: "index" });
       });
     }
@@ -206,6 +212,9 @@ export default {
       justify-content: space-between;
       align-items: center;
       color: #999;
+      span {
+        cursor: pointer;
+      }
     }
   }
 }

@@ -1,18 +1,15 @@
 <template>
   <div>
-    <OrderHeader></OrderHeader>
     <router-view></router-view>
-    <OrderFooter></OrderFooter>
+    <HomeFooter></HomeFooter>
   </div>
 </template>
 
 <script>
-import OrderHeader from "@layout/OrderHearder.vue";
-import OrderFooter from "@layout/OrderFooter.vue";
+import HomeFooter from "@layout/HomeFooter.vue";
 export default {
   components: {
-    OrderHeader,
-    OrderFooter
+    HomeFooter
   }
 };
 </script>

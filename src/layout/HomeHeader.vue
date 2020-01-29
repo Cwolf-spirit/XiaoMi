@@ -16,7 +16,7 @@
           <div v-if="!isLogin" class="fl">
             <span @click="$router.push({ name: 'login' })">登录</span>
             <el-divider direction="vertical"></el-divider>
-            <span @click="$router.push({ name: 'regiser' })">注册</span>
+            <span @click="$router.push({ name: 'register' })">注册</span>
           </div>
           <div v-else class="fl">
             <span>{{ $store.state.userInfo.username }}</span>
@@ -25,7 +25,7 @@
             <el-divider direction="vertical"></el-divider>
             <span @click="$router.push({ name: 'Order' })">我的订单</span>
           </div>
-          <div class="cart fl">
+          <div class="cart fl" @click="toCart">
             <i class="iconfont icongouwuchekong"></i>
             <span>购物车({{ cartNum }})</span>
           </div>
@@ -36,8 +36,7 @@
     <div class="nav-second">
       <div class="container">
         <div class="logo">
-          <!-- <img src="@img/logo-mi.png" alt="" /> -->
-          <a href="javascript:;"></a>
+          <span @click="$router.push({ name: 'index' })"></span>
         </div>
         <div class="nav-info">
           <ul class="nav-ul clearfix">
@@ -149,7 +148,6 @@ export default {
   data() {
     return {
       platform,
-      cartNum: 0,
       search: "",
       productList: [] // 产品list
     };
@@ -157,6 +155,9 @@ export default {
   computed: {
     isLogin() {
       return this.$store.state.isLogin;
+    },
+    cartNum() {
+      return this.$store.state.cartNum;
     }
   },
   created() {
@@ -177,6 +178,21 @@ export default {
         .catch(() => {
           this.$msg.error("请求失败");
         });
+    },
+    toCart() {
+      if (!this.$store.state.isLogin) {
+        this.$confirm("请先登录", "提示", {
+          confirmButtonText: "确定",
+          cancelButtonText: "取消",
+          type: "warning"
+        })
+          .then(() => {
+            this.$router.push({ name: "login" });
+          })
+          .catch(() => {});
+      } else {
+        this.$router.push({ name: "cart" });
+      }
     }
   }
 };
@@ -197,6 +213,7 @@ export default {
       cursor: pointer;
     }
     .cart {
+      cursor: pointer;
       width: 110px;
       height: 40px;
       background-color: #666666;
@@ -209,6 +226,7 @@ export default {
   }
 }
 .nav-second {
+  background-color: #fff;
   height: 112px;
   .container {
     padding: 30px 0;
@@ -221,10 +239,11 @@ export default {
       width: 55px;
       height: 55px;
       background-color: #ff6600;
-      a {
+      span {
         display: inline-block;
         width: 110px;
         height: 55px;
+        cursor: pointer;
         &:before {
           content: " ";
           display: inline-block;
@@ -243,7 +262,7 @@ export default {
           background-size: 55px;
         }
       }
-      &:hover a::before {
+      &:hover span::before {
         margin-left: -55px;
         transition: all 0.2s;
       }

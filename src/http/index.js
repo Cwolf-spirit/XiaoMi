@@ -18,17 +18,13 @@ service.interceptors.response.use(
     if (res.status == 0) {
       return res.data;
     } else if (res.status == 10) {
-      //   store.commit('signOut');
       router.replace({
-        name: "/login"
+        name: "login"
       });
-      const data = {
-        status: 10,
-        msg: "您的账号在它处登录成功，当前位置已退出，如有疑问请及时修改密码"
-      };
-      return data;
+      return Promise.reject(res);
     } else {
       Vue.prototype.$msg.error(res.msg);
+      return Promise.reject(res);
     }
   },
   err => {

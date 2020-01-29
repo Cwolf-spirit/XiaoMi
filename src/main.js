@@ -3,6 +3,8 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import ElementUI from "element-ui";
+import VueLazyLoad from "vue-lazyload";
+import VueCookie from "vue-cookie";
 // elementui样式
 import "element-ui/lib/theme-chalk/index.css";
 // swiper样式
@@ -10,6 +12,10 @@ import "swiper/dist/css/swiper.css";
 // import "./assets/iconfont/font_1606365_w3u33of6vdl/iconfont.css";
 
 Vue.use(ElementUI);
+Vue.use(VueCookie);
+Vue.use(VueLazyLoad, {
+  loading: require("@img/loading-svg/loading-bars.svg")
+});
 Vue.use(ElementUI, { size: "medium", zIndex: 3000 });
 Vue.config.productionTip = false;
 

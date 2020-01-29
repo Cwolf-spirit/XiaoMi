@@ -6,14 +6,23 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     userInfo: {},
-    isLogin: false
+    isLogin: false,
+    cartNum: 0
   },
   mutations: {
+    signOut(state) {
+      state.userInfo = {};
+      state.isLogin = false;
+      state.cartNum = 0;
+    },
     userInfo(state, data) {
       state.userInfo = data;
     },
     isLogin(state, data) {
       state.isLogin = data;
+    },
+    cartNum(state, data) {
+      state.cartNum = data;
     }
   },
   actions: {
