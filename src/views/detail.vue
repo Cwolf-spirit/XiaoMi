@@ -132,6 +132,7 @@ export default {
       };
       addCart(obj).then(data => {
         this.$store.commit("cartNum", data.cartTotalQuantity);
+        this.$msg.success("添加成功");
       });
     }
   }

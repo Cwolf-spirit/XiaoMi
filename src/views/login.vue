@@ -29,7 +29,12 @@
             />
           </div>
           <div class="password">
-            <input v-model="passWord" type="password" placeholder="密码" />
+            <input
+              v-model="passWord"
+              type="password"
+              placeholder="密码"
+              @keydown="keyLogin"
+            />
           </div>
           <span class="loginBtn" @click="login">登录</span>
         </div>
@@ -79,6 +84,11 @@ export default {
     };
   },
   methods: {
+    keyLogin(e) {
+      if (e.keyCode === 13) {
+        this.login();
+      }
+    },
     loginByZH() {
       this.isShow = true;
     },
@@ -95,7 +105,7 @@ export default {
         this.$store.commit("userInfo", data);
         this.$store.commit("isLogin", true);
         this.$cookie.set("userId", data.id, { expires: "1M" });
-        this.$router.push({ name: "index" });
+        this.$router.push({ name: "index", params: { from: "login" } });
       });
     }
   }

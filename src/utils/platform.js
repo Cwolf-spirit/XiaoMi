@@ -6,7 +6,7 @@ import VueCookie from "vue-cookie";
 function signOut() {
   axios.post("/user/logout", {}).then(() => {
     // 清楚vuex数据和cookie
-    VueCookie.set("userId", "");
+    VueCookie.set("userId", "", { expires: "-1" });
     store.commit("signOut");
     router.push({
       name: "login"

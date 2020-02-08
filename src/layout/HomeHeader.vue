@@ -23,7 +23,7 @@
             <el-divider direction="vertical"></el-divider>
             <span @click="platform.signOut">退 出</span>
             <el-divider direction="vertical"></el-divider>
-            <span @click="$router.push({ name: 'Order' })">我的订单</span>
+            <span @click="$router.push({ name: 'orderList' })">我的订单</span>
           </div>
           <div class="cart fl" @click="toCart">
             <i class="iconfont icongouwuchekong"></i>
@@ -216,9 +216,10 @@ export default {
       cursor: pointer;
       width: 110px;
       height: 40px;
-      background-color: #666666;
+      background-color: #ff6600;
       margin-left: 20px;
       text-align: center;
+      color: #fff;
       span {
         margin-left: 10px;
       }

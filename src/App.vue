@@ -8,8 +8,10 @@
 import { getUserInfo, getCartNum } from "@/api/app.js";
 export default {
   created() {
-    this.getUserInfo();
-    this.getCartNum();
+    if (this.$cookie.get("userId")) {
+      this.getUserInfo();
+      this.getCartNum();
+    }
   },
   methods: {
     getUserInfo() {

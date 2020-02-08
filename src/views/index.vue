@@ -148,6 +148,7 @@
 
 <script>
 import { getProductList } from "@/api/Header.js";
+import { getCartNum } from "@/api/app.js";
 import { addCart } from "@/api/detail.js";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 import dialogCart from "@components/dialog.vue";
@@ -241,8 +242,16 @@ export default {
   },
   created() {
     this.getPhoneList();
+    if (this.$route.params.from && this.$route.params.from == "login") {
+      this.getCartNum();
+    }
   },
   methods: {
+    getCartNum() {
+      getCartNum().then(data => {
+        this.$store.commit("cartNum", data);
+      });
+    },
     getPhoneList() {
       const obj = {
         categoryId: 100012,

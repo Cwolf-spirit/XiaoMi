@@ -59,6 +59,14 @@ const routes = [
         }
       },
       {
+        path: "pay",
+        name: "pay",
+        component: () => import(/* webpackChunkName: "Pay" */ "@views/Pay.vue"),
+        meta: {
+          requireAuth: true
+        }
+      },
+      {
         path: "aliPay",
         name: "aliPay",
         component: () =>

@@ -3,7 +3,12 @@
     <div class="hearder">
       <div class="container">
         <div class="left">
-          <img src="@img/logo-mi.png" class="logo" alt="" />
+          <img
+            src="@img/logo-mi.png"
+            class="logo"
+            alt=""
+            @click="$router.push({ name: 'index' })"
+          />
           <div class="content">
             <span class="title">{{ title }}</span>
             <span class="description">{{ content }}</span>
@@ -46,6 +51,7 @@ export default {
       align-items: center;
       .logo {
         width: 52px;
+        cursor: pointer;
       }
       .content {
         margin-left: 54px;

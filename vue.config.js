@@ -22,6 +22,7 @@ module.exports = {
   },
   productionSourceMap: false,
   chainWebpack: config => {
+    config.plugins.delete("prefetch");
     config.resolve.alias
       .set("@", resolve("src"))
       .set("@api", resolve("src/api")) // 对应接口

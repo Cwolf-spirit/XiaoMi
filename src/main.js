@@ -5,12 +5,14 @@ import store from "./store";
 import ElementUI from "element-ui";
 import VueLazyLoad from "vue-lazyload";
 import VueCookie from "vue-cookie";
+import infiniteScroll from "vue-infinite-scroll";
 // elementui样式
 import "element-ui/lib/theme-chalk/index.css";
 // swiper样式
 import "swiper/dist/css/swiper.css";
 // import "./assets/iconfont/font_1606365_w3u33of6vdl/iconfont.css";
 
+Vue.use(infiniteScroll);
 Vue.use(ElementUI);
 Vue.use(VueCookie);
 Vue.use(VueLazyLoad, {
